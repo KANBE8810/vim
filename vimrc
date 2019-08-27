@@ -1,26 +1,26 @@
 "
-"　　　　　　　                         　　　　 　 /i　　 ,ﾍ
-"　　　　　　 　 　 　 　                         /:::|　 / ::l
-"　　                          　　　　　　　　　 /::　:|,〃　::|
-"　　　　　　　　　                           　　/,--､,. --、 ヽ
-"　　　　　　　                          　　　 ,ｌ/ ∩　∩　ヽ ＼
-"　　　　　　                          　　　　/.{　　 　 　 　 }　ヽ
-"　                           　　　　　　　 　 ﾆ'' 　‘　‘　　 ﾆﾆ　〉
-"　　　　　　                            　 　 　 "ゝヽ￣ ﾌ　,ﾉ,.く＾
-"　　　　　　　                           　　　 ノ ﾞ　￣￣　'"　 ヽ
-"　　　　　　　                          　　　(／i::　　　　　:::;ｉヽ )
-"　　　　　　　　　　                           　 {::　　　　　:::;}
-"　　　　　　　　　　 　                          ヽ 　.........　 ｲ 
-"　　　　　　　　 　                              　 　 し′| ::| し′
-"　　　　　　　　　　　　　　                          　 |::|
-"　　　　　　　　 　                         　 　 　 　 |::|
-"　　　　　　　　　　　　                         　　　　|::|
-"　　__   _(_)_ __ ___  _ __ ___ 　　　　　　　　  　 　   |::|
-"　 \ \ / / | '_ ` _ \| '__/ __|                           |::|
-"    \ V /| | | | | | | | | (__　　　　　    　　   　  　 |:::|
-"　   \_/ |_|_| |_| |_|_|  \___|                          |:::|
-"　 　 　 　 　 　 　 　 　 　                            |:::|
-"　　　　　　　　　                          　　  　　　 し'"
+"　　　　　　　                   　　　　 　 /i　　 ,ﾍ
+"　　　　　　 　 　 　 　                   /:::|　 / ::l
+"　　                          　   　　　 /::　:|,〃　::|
+"　　　　　　　　　                     　　/,--､,. --、 ヽ
+"　　　　　　　                    　　　 ,ｌ/ ∩　∩　ヽ ＼
+"　　　　　　                    　　　　/.{　　 　 　 　 }　ヽ
+"　                        　　  　　  　 ﾆ'' 　‘　‘　　 ﾆﾆ　〉
+"　　　　　　                      　 　 　 "ゝヽ￣ ﾌ　,ﾉ,.く＾
+"　　　　　　　                     　　　 ノ ﾞ　￣￣　'"　 ヽ
+"　　　　                       　　　(／i::　　　　　:::;ｉヽ )
+"　　　　　　　                        　 {::　　　　　:::;}
+"　　　　　　　 　                       ヽ 　.........　 ｲ 
+"　　　　　 　                           　 　 し′| ::| し′
+"　　　　　　　　　　　　　                      　 |::|
+"　　　　　　　　 　                    　 　 　 　 |::|
+"　　　　　　　　　　　　                     　　　　|::|
+"　　__   _(_)_ __ ___  _ __ ___ 　　　　　  　 　   |::|
+"　 \ \ / / | '_ ` _ \| '__/ __|                       |::|
+"    \ V /| | | | | | | | | (__　　      　　   　  　 |:::|
+"　   \_/ |_|_| |_| |_|_|  \___|                        |:::|
+"　 　 　 　 　 　 　 　 　 　                         |:::|
+"　　　　　　　　　                       　　  　　 し'"
 "
 "
 "
@@ -44,7 +44,7 @@ if dein#load_state('/home/kanbe/.cache/dein')
 	call dein#add('jacoborus/tender.vim')
 	call dein#add('vim-airline/vim-airline')
 	call dein#add('simeji/winresizer')
-"	call dein#add('')
+	call dein#add('')
 "	call dein#add('')
 "	call dein#add('')
 "	call dein#add('')
@@ -136,8 +136,6 @@ vnoremap <C-Down> "zx"zp`[V`]
 " 複数行を移動 vモードで選択してctrl+UP or Dn
 nnoremap <C-Up> "zdd<Up>"zP
 nnoremap <C-Down> "zdd"zp
-
-
 " vim-airline/vim-airline {{{
 let g:airline_theme = 'tender'
 set laststatus=2

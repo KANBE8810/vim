@@ -1,7 +1,28 @@
-"                         __   _(_)_ __ ___  _ __ ___ 
-"                         \ \ / / | '_ ` _ \| '__/ __|
-"                          \ V /| | | | | | | | | (__ 
-"                          \ _/ |_|_| |_| |_|_|  \___|
+"
+"　　　　　　　                         　　　　 　 /i　　 ,ﾍ
+"　　　　　　 　 　 　 　                         /:::|　 / ::l
+"　　                          　　　　　　　　　 /::　:|,〃　::|
+"　　　　　　　　　                           　　/,--､,. --、 ヽ
+"　　　　　　　                          　　　 ,ｌ/ ∩　∩　ヽ ＼
+"　　　　　　                          　　　　/.{　　 　 　 　 }　ヽ
+"　                           　　　　　　　 　 ﾆ'' 　‘　‘　　 ﾆﾆ　〉
+"　　　　　　                            　 　 　 "ゝヽ￣ ﾌ　,ﾉ,.く＾
+"　　　　　　　                           　　　 ノ ﾞ　￣￣　'"　 ヽ
+"　　　　　　　                          　　　(／i::　　　　　:::;ｉヽ )
+"　　　　　　　　　　                           　 {::　　　　　:::;}
+"　　　　　　　　　　 　                          ヽ 　.........　 ｲ 
+"　　　　　　　　 　                              　 　 し′| ::| し′
+"　　　　　　　　　　　　　　                          　 |::|
+"　　　　　　　　 　                         　 　 　 　 |::|
+"　　　　　　　　　　　　                         　　　　|::|
+"　　__   _(_)_ __ ___  _ __ ___ 　　　　　　　　  　 　   |::|
+"　 \ \ / / | '_ ` _ \| '__/ __|                           |::|
+"    \ V /| | | | | | | | | (__　　　　　    　　   　  　 |:::|
+"　   \_/ |_|_| |_| |_|_|  \___|                          |:::|
+"　 　 　 　 　 　 　 　 　 　                            |:::|
+"　　　　　　　　　                          　　  　　　 し'"
+"
+"
 "
 "dein Scripts-----------------------------
 if &compatible
@@ -22,6 +43,13 @@ if dein#load_state('/home/kanbe/.cache/dein')
   " Add or remove your plugins here like this:
 	call dein#add('jacoborus/tender.vim')
 	call dein#add('vim-airline/vim-airline')
+	call dein#add('simeji/winresizer')
+"	call dein#add('')
+"	call dein#add('')
+"	call dein#add('')
+"	call dein#add('')
+
+
 "You can specify revision/branch/tag.
 " call dein#add('Shougo/deol.nvim')
 " Required:
@@ -58,6 +86,21 @@ set tabstop=2
 set title
 " 行をまたいで移動
 set whichwrap=b,s,h,l,<,>,[,],~
+"改行時に自動でインテンド
+set smartindent
+"対応するかっこを強調
+set showmatch
+"コマンド候補の表示、補完
+set wildmenu
+"クリップボードの有効化
+set guioptions+=a
+"検索結果のハイライト
+set hlsearch
+"コードにハイライト
+syntax on
+"バックスペースの有効化
+set backspace=indent,eol,start
+
 
 " leader 設定
 let mapleader = "\<Space>"
@@ -71,25 +114,34 @@ nnoremap <Leader>t :tabnew<CR>
 nnoremap <Leader>wq :wq<CR>
 "leader + g で次のtabに切り替え
 nnoremap <Leader>g gt<CR> 
+"カーソル下の単語をハイライトする　space2回
+nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
+"ビジュアルモードでもハイライト置換
+xnoremap <silent> <Space> mz:call <SID>set_vsearch()<CR>:set hlsearch<CR>`z
+xnoremap * :<C-u>call <SID>set_vsearch()<CR>/<C-r>/<CR>
+xmap # <Space>:%s/<C-r>///g<Left><Left>
+
+function! s:set_vsearch()
+  silent normal gv"zy
+  let @/ = '\V' . substitute(escape(@z, '/\'), '\n', '\\n', 'g')
+endfunction
+"上下に空行を挿入する　shift+enterで下　shift+ctrl+enterで上
+imap <S-CR> <End><CR>
+imap <C-S-CR> <Up><End><CR>
+nnoremap <S-CR> mzo<ESC>`z
+nnoremap <C-S-CR> mzO<ESC>`z
+" 行を移動 ctrl+Up or Dn
+vnoremap <C-Up> "zx<Up>"zP`[V`]
+vnoremap <C-Down> "zx"zp`[V`]
+" 複数行を移動 vモードで選択してctrl+UP or Dn
+nnoremap <C-Up> "zdd<Up>"zP
+nnoremap <C-Down> "zdd"zp
+
 
 " vim-airline/vim-airline {{{
-let g:airline_theme = 'temder'
+let g:airline_theme = 'tender'
 set laststatus=2
 " Show branch name
-"let g:airline#extensions#branch#enabled = 1
-" Show buffer's filename
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#fnamemod = ':t'
-"let g:airline#extensions#tabline#buffer_nr_show = 1
-"let g:airline#extensions#wordcount#enabled = 0
-"let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'y', 'z']]
-"let g:airline_section_c = '%t'
-"let g:airline_section_x = '%{&filetype}'
-"let g:airline_section_z = '%3l:%2v %{airline#extensions#ale#get_warning()} %{airline#extensions#ale#get_error()}'
-"let g:airline#extensions#ale#error_symbol = '✖'
-"let g:airline#extensions#ale#warning_symbol = '▲'
-"let g:airline#extensions#default#section_truncate_width = {}
-" Check whitespace at end of line
-"let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#branch#enabled = 1
 " }}}
 

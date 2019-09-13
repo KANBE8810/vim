@@ -41,14 +41,13 @@ if dein#load_state('/home/kanbe/.cache/dein')
   call dein#add('/home/kanbe/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here like this:
-	call dein#add('jacoborus/tender.vim')
-	call dein#add('vim-airline/vim-airline')
-	call dein#add('simeji/winresizer')
+	call dein#add('Yggdroot/indentLine')
 	call dein#add('vim-scripts/vcscommand.vim')
-"	call dein#add('')
-"	call dein#add('')
-"	call dein#add('')
-
+	call dein#add('jacoborus/tender.vim')
+	call dein#add('simeji/winresizer')
+	call dein#add('vim-airline/vim-airline')
+	call dein#add('vim-airline/vim-airline-themes')
+	call dein#add('ryanoasis/vim-devicons')
 
 "You can specify revision/branch/tag.
 " call dein#add('Shougo/deol.nvim')
@@ -63,7 +62,7 @@ syntax enable
 
 " If you want to install not installed plugins on startup.
 if dein#check_install()
-  call dein#install()
+	call dein#install()
 endif
 
 
@@ -78,8 +77,8 @@ set number
 set cursorline
 "行末の1文字先までカーソルが移動できる
 set virtualedit=onemore
-"不可視文字を可視化(タブが「▸-」と表示される)
-set list listchars=tab:\▸\-
+"不可視文字を可視化等
+set list listchars=tab:»-
 "行頭以外のTab文字の表示幅（スペースいくつ分）
 set tabstop=2
 " タイトルを表示
@@ -92,15 +91,20 @@ set smartindent
 set showmatch
 "コマンド候補の表示、補完
 set wildmenu
+"保存するコマンド履歴の数
+set history=5000
 "クリップボードの有効化
 set guioptions+=a
 "検索結果のハイライト
 set hlsearch
 "コードにハイライト
 syntax on
-"バックスペースの有効化
-set backspace=indent,eol,start
+"挿入モードからノーマルモードへの切り替えの遅延をなくす
+set ttimeoutlen=50
+"スワップファイルを作成しない
+set noswapfile
 
+nnoremap ss :source ~/.vimrc<CR>
 
 " leader 設定
 let mapleader = "\<Space>"
@@ -136,10 +140,13 @@ vnoremap <C-Down> "zx"zp`[V`]
 " 複数行を移動 vモードで選択してctrl+UP or Dn
 nnoremap <C-Up> "zdd<Up>"zP
 nnoremap <C-Down> "zdd"zp
+
 " vim-airline/vim-airline {{{
 let g:airline_theme = 'tender'
 set laststatus=2
-" Show branch name
+"Show branch name
 let g:airline#extensions#branch#enabled = 1
 " }}}
-
+"
+" インテンドに関する設定
+let g:indentLine_char = '|'
